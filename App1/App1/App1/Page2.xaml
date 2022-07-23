@@ -9,7 +9,7 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout>
-                           <Label x:Name="Title" Text="{Binding Title}" />
+                            <Label x:Name="Title" Text="{Binding Title}" />
                             <Label x:Name="Author" Text="{Binding Author}" />
                             <Label x:Name="Date" Text="{Binding Date}" />
                             <Label x:Name="Isbn" Text="{Binding ISBN}" />
