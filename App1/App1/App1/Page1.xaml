@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App1.Page1">
+    
+        <StackLayout BackgroundColor="white">
+        <Label Text=" Zarejestruj się!" FontSize="24" HorizontalTextAlignment="Center" TextColor="Black"/>
+        <Entry x:Name="Login" Placeholder="Login"/>
+            <Entry x:Name="Haslo" Placeholder="Hasło"/>
+            <Entry x:Name="PowtorzHaslo" Placeholder="Powtórz hasło"/>
+        <Button x:Name="Zarejestruj" BorderRadius="6" Text="Zarejestruj" Clicked="Zarejestruj_Clicked"  VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="Blue" TextColor="White"/>
+            <Button x:Name="LinkLogin" Clicked="DoLoginuClicked" Text="Nie masz konta? Zarejetruj się!" BackgroundColor="White" HorizontalOptions="Center"/>
+        </StackLayout>
+    
+</ContentPage>

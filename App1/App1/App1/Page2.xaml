@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App1.Page2">
+
+    <Frame>
+        <StackLayout x:Name="Ksiazka">
+            <ContentView>
+                <Label x:Name="Title" Text="{Binding Title}" />
+            </ContentView>
+            <ContentView>
+                <Label x:Name="Author" Text="{Binding Author}" />
+            </ContentView>
+            <ContentView>
+                <Label x:Name="Date" Text="{Binding Date}" />
+            </ContentView>
+            <ContentView>
+                <Label x:Name="Isbn" Text="{Binding ISBN}" />
+            </ContentView>
+            <ContentView>
+                <Button x:Name="Id" Text="Dodaj do ulubionych" Clicked="DoUlubionychClicked" ClassId="{Binding Id}"/>
+            </ContentView>
+        </StackLayout>
+    </Frame>
+</ContentPage>
