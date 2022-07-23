@@ -3867,11 +3867,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Bartek\\Desktop\\projekt zespołowy\\App1\\App1\\App1.Android\\App1.Android.csproj",
+      "projectUniqueName": "C:\\Users\\Bartek\\Documents\\GitHub\\projekt-zespolowy\\App1\\App1\\App1.Android\\App1.Android.csproj",
       "projectName": "App1.Android",
-      "projectPath": "C:\\Users\\Bartek\\Desktop\\projekt zespołowy\\App1\\App1\\App1.Android\\App1.Android.csproj",
+      "projectPath": "C:\\Users\\Bartek\\Documents\\GitHub\\projekt-zespolowy\\App1\\App1\\App1.Android\\App1.Android.csproj",
       "packagesPath": "C:\\Users\\Bartek\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Bartek\\Desktop\\projekt zespołowy\\App1\\App1\\App1.Android\\obj\\",
+      "outputPath": "C:\\Users\\Bartek\\Documents\\GitHub\\projekt-zespolowy\\App1\\App1\\App1.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [
@@ -3888,8 +3888,8 @@
       "frameworks": {
         "monoandroid12.0": {
           "projectReferences": {
-            "C:\\Users\\Bartek\\Desktop\\projekt zespołowy\\App1\\App1\\App1\\App1.csproj": {
-              "projectPath": "C:\\Users\\Bartek\\Desktop\\projekt zespołowy\\App1\\App1\\App1\\App1.csproj"
+            "C:\\Users\\Bartek\\Documents\\GitHub\\projekt-zespolowy\\App1\\App1\\App1\\App1.csproj": {
+              "projectPath": "C:\\Users\\Bartek\\Documents\\GitHub\\projekt-zespolowy\\App1\\App1\\App1\\App1.csproj"
             }
           }
         }

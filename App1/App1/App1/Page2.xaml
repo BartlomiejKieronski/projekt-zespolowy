@@ -4,22 +4,20 @@
              x:Class="App1.Page2">
 
     <Frame>
-        <StackLayout x:Name="Ksiazka">
-            <ContentView>
-                <Label x:Name="Title" Text="{Binding Title}" />
-            </ContentView>
-            <ContentView>
-                <Label x:Name="Author" Text="{Binding Author}" />
-            </ContentView>
-            <ContentView>
-                <Label x:Name="Date" Text="{Binding Date}" />
-            </ContentView>
-            <ContentView>
-                <Label x:Name="Isbn" Text="{Binding ISBN}" />
-            </ContentView>
-            <ContentView>
-                <Button x:Name="Id" Text="Dodaj do ulubionych" Clicked="DoUlubionychClicked" ClassId="{Binding Id}"/>
-            </ContentView>
-        </StackLayout>
+        <ListView x:Name="Ksiazka" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                           <Label x:Name="Title" Text="{Binding Title}" />
+                            <Label x:Name="Author" Text="{Binding Author}" />
+                            <Label x:Name="Date" Text="{Binding Date}" />
+                            <Label x:Name="Isbn" Text="{Binding ISBN}" />
+                            <Button x:Name="Id" Text="Dodaj do ulubionych" Clicked="DoUlubionychClicked" ClassId="{Binding Id}"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Frame>
 </ContentPage>

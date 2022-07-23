@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6Y4egHb2PyHj7A1Zb82K0e1sYYscwiNdI+Nj4wrs35GrIPKsUI5429+Xfz9rOoZP1lf9kxKJcR0Fe4w1SjBStw==",
+  "dgSpecHash": "R2oabaVNa8bEHtJZasqLsyEOEQuucs/oH101mF1yA2tyEdze5nVDWP8LQdNAbJFYc0ZYKbWdegI426L4LADCaQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Bartek\\Desktop\\projekt zespołowy\\App1\\App1\\App1.Android\\App1.Android.csproj",
+  "projectFilePath": "C:\\Users\\Bartek\\Documents\\GitHub\\projekt-zespolowy\\App1\\App1\\App1.Android\\App1.Android.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Bartek\\.nuget\\packages\\bouncycastle.netcore\\1.8.5\\bouncycastle.netcore.1.8.5.nupkg.sha512",
     "C:\\Users\\Bartek\\.nuget\\packages\\google.protobuf\\3.19.4\\google.protobuf.3.19.4.nupkg.sha512",
