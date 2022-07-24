@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using MySqlConnector;
+using System.Data.SqlClient;
 
 namespace App1
 {
@@ -13,7 +14,7 @@ namespace App1
     public partial class Page1 : ContentPage
     {
         //odwołanie do klasy z stringien do połączenie z bazą
-        mysql_connect con = new mysql_connect();
+        SqlConnect con = new SqlConnect();
         
         public Page1()
         {
@@ -30,40 +31,34 @@ namespace App1
             //sprawdzenie czy pola są takie same
             if (Haslo.Text == PowtorzHaslo.Text)
             {
+                string password = Haslo.Text.ToString();
+                string login = Login.Text.ToString();
                 try
                 {
-                    //połączenie z bazą
-                    MySqlConnection connection = new MySqlConnection(con.connect());
-                    connection.Open();
-                    string login = Login.Text.ToString();
-                    string haslo = Haslo.Text.ToString();
-                    //zapytanie do wprowadzenia danych do bazy
-                   string sql_insert = "INSERT INTO uzytkownicy(Login,Haslo) VALUES('" + login + "','" + haslo + "')";
-                   //wykonanie zapytania
-                    MySqlCommand command = new MySqlCommand(sql_insert, connection);
-                        try
+                    using (SqlConnection connection = con.Connection())
+                    {
+                        string query = string.Format(@"IF NOT EXISTS (SELECT Login FROM [dbo].users WHERE Login='{0}')
+                                            BEGIN
+                                                INSERT INTO [dbo].users (Login, Haslo, Admin) VALUES ('{1}', HASHBYTES('SHA2_256', CONVERT(NVARCHAR(255),'{2}')), 0);
+                                            END;", login, login, password);
+
+                        using (SqlCommand command = new SqlCommand(query, connection))
                         {
-                            if (command.ExecuteNonQuery() == 1)
-                            {
-                            //jeśli się udało przejście do logowania
-                                Navigation.PushAsync(new MainPage());
-                            }
+                            connection.Open();
+                            int result = command.ExecuteNonQuery();
+
+                            // Check Error
+                            if (result < 0)
+                                App.Current.MainPage.DisplayAlert("Konto zostało pomyślnie utworzone!", "", "ok");
                             else
-                            {
-                            //jeśli sie nie udało wyświetlenie alertu
-                            App.Current.MainPage.DisplayAlert("Nie udało się utworzyć konta!","","ok");
-                            }
+                                App.Current.MainPage.DisplayAlert("Nie udało się utworzyć konta!", "", "ok");
                         }
-                        catch (Exception ex)
-                        {
-                        
-                        }
-                    connection.Close();
+                    }
                 }
-                catch
+                catch (Exception ex)
                 {
                     //wyświetlenie alertu o błędzie
-                    App.Current.MainPage.DisplayAlert("Błąd podczas łączenia z bazą danych","","Ok");
+                    App.Current.MainPage.DisplayAlert("Błąd podczas łączenia z bazą danych", ex.ToString(), "Ok");
                 }
             }
             else

@@ -1,21 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Bartek\\Documents\\GitHub\\projekt-zespolowy\\App1\\App1\\App1.Android\\App1.Android.csproj": {}
+    "J:\\projects\\source\\repos\\projekt-zespolowy-mobile\\App1\\App1\\App1.Android\\App1.Android.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Bartek\\Documents\\GitHub\\projekt-zespolowy\\App1\\App1\\App1.Android\\App1.Android.csproj": {
+    "J:\\projects\\source\\repos\\projekt-zespolowy-mobile\\App1\\App1\\App1.Android\\App1.Android.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Bartek\\Documents\\GitHub\\projekt-zespolowy\\App1\\App1\\App1.Android\\App1.Android.csproj",
+        "projectUniqueName": "J:\\projects\\source\\repos\\projekt-zespolowy-mobile\\App1\\App1\\App1.Android\\App1.Android.csproj",
         "projectName": "App1.Android",
-        "projectPath": "C:\\Users\\Bartek\\Documents\\GitHub\\projekt-zespolowy\\App1\\App1\\App1.Android\\App1.Android.csproj",
-        "packagesPath": "C:\\Users\\Bartek\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Bartek\\Documents\\GitHub\\projekt-zespolowy\\App1\\App1\\App1.Android\\obj\\",
+        "projectPath": "J:\\projects\\source\\repos\\projekt-zespolowy-mobile\\App1\\App1\\App1.Android\\App1.Android.csproj",
+        "packagesPath": "C:\\Users\\Lucjan\\.nuget\\packages\\",
+        "outputPath": "J:\\projects\\source\\repos\\projekt-zespolowy-mobile\\App1\\App1\\App1.Android\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "C:\\Dev\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Bartek\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Lucjan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +32,8 @@
         "frameworks": {
           "monoandroid12.0": {
             "projectReferences": {
-              "C:\\Users\\Bartek\\Documents\\GitHub\\projekt-zespolowy\\App1\\App1\\App1\\App1.csproj": {
-                "projectPath": "C:\\Users\\Bartek\\Documents\\GitHub\\projekt-zespolowy\\App1\\App1\\App1\\App1.csproj"
+              "J:\\projects\\source\\repos\\projekt-zespolowy-mobile\\App1\\App1\\App1\\App1.csproj": {
+                "projectPath": "J:\\projects\\source\\repos\\projekt-zespolowy-mobile\\App1\\App1\\App1\\App1.csproj"
               }
             }
           }
@@ -54,17 +58,21 @@
         }
       }
     },
-    "C:\\Users\\Bartek\\Documents\\GitHub\\projekt-zespolowy\\App1\\App1\\App1\\App1.csproj": {
+    "J:\\projects\\source\\repos\\projekt-zespolowy-mobile\\App1\\App1\\App1\\App1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Bartek\\Documents\\GitHub\\projekt-zespolowy\\App1\\App1\\App1\\App1.csproj",
+        "projectUniqueName": "J:\\projects\\source\\repos\\projekt-zespolowy-mobile\\App1\\App1\\App1\\App1.csproj",
         "projectName": "App1",
-        "projectPath": "C:\\Users\\Bartek\\Documents\\GitHub\\projekt-zespolowy\\App1\\App1\\App1\\App1.csproj",
-        "packagesPath": "C:\\Users\\Bartek\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Bartek\\Documents\\GitHub\\projekt-zespolowy\\App1\\App1\\App1\\obj\\",
+        "projectPath": "J:\\projects\\source\\repos\\projekt-zespolowy-mobile\\App1\\App1\\App1\\App1.csproj",
+        "packagesPath": "C:\\Users\\Lucjan\\.nuget\\packages\\",
+        "outputPath": "J:\\projects\\source\\repos\\projekt-zespolowy-mobile\\App1\\App1\\App1\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Dev\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Bartek\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Lucjan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -104,6 +112,10 @@
               "version": "[2.0.3, )",
               "autoReferenced": true
             },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.3, )"
+            },
             "Xamarin.Essentials": {
               "target": "Package",
               "version": "[1.7.0, )"
@@ -123,7 +135,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

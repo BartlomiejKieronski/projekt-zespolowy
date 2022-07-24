@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using MySqlConnector;
+using System.Data;
+using System.Data.SqlClient;
+using Xamarin.Essentials;
 
 namespace App1
 {
@@ -14,18 +17,19 @@ namespace App1
     public partial class Page3 : ContentPage
     {
         //odwolanie do klasy z połączeniem z bazą
-        mysql_connect con = new mysql_connect();
+        SqlConnect con = new SqlConnect();
         //lista z klasy
         public IList<books> Books { get; set; }
+        DataTable dt = new DataTable();
         //klasa z polami do przechowywaniadanych pobieranych z bazy
         public class books
         {
             public int Id { get; set; }
             public string Title { get; set; }
             public string Author { get; set; }
-            public string Date { get; set; }
             public string ISBN { get; set; }
-            public string UserId { get; set; }
+            public string Tags { get; set; }
+
 
         }
         //zmienna z id użytkownika
@@ -43,37 +47,104 @@ namespace App1
         }
         protected override void OnAppearing()
         {
+            
             base.OnAppearing();
             //konvertowanie id użytkownika do stringu
             string useriden = login.ToString();
-            //połączenie z bazą
-            MySqlConnection connection = new MySqlConnection(con.connect());
-            connection.Open();
-            //pobieranie danych z bazy
-            MySqlCommand command1 = new MySqlCommand("SELECT * FROM favourites WHERE userID='" + useriden + "'", connection);
-            //wykonywanie zapytania
-            var rd = command1.ExecuteReader();
-            //tworzenie nowej listy 
-            Books = new List<books>();
-            //dodawanie rekordów z bazy do listy
-            while (rd.Read())
+
+            try
             {
-                Books.Add(new books
+                using (SqlConnection connection = con.Connection())
                 {
-                    Id = rd.GetInt32("Id"),
-                    Title = rd.GetString("Title").ToString(),
-                    Author = rd.GetString("Author").ToString(),
-                    Date = rd.GetString("Date").ToString(),
-                    ISBN = rd.GetString("ISBN").ToString(),
-                    UserId = rd.GetInt32("userID").ToString()
+                    connection.Open();
+
+                    string sql = string.Format(String.Format(@"SELECT [dbo].books.BookId
+                                                        ,[dbo].authors.Author
+                                                        ,[dbo].books.Title
+                                                        ,[dbo].books.ISBN
+                                                        ,STRING_AGG([dbo].tags.Tag, ', ') AS Tags
+                                                        FROM [dbo].books
+                                                        JOIN [dbo].tagbook
+                                                          ON [dbo].tagbook.BookId = [dbo].books.BookId
+                                                        JOIN [dbo].authorbook
+                                                          ON [dbo].books.BookId = [dbo].authorbook.BookId
+                                                        JOIN [dbo].authors
+                                                          ON [dbo].authorbook.AuthorId = dbo.authors.AuthorId
+                                                        JOIN [dbo].tags
+                                                          ON [dbo].tags.TagId = [dbo].tagbook.TagId
+                                                        INNER JOIN [dbo].favourites
+                                                          ON [dbo].books.BookId = [dbo].favourites.BookId WHERE [dbo].favourites.UserId = {0}
+                                                        GROUP BY [dbo].books.Title,[dbo].authors.Author,[dbo].books.ISBN, [dbo].books.BookId;", login));
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        using (var reader = command.ExecuteReader())
+                        {
+                            dt.Load(reader);
+                        }
+                    }
                 }
-                );
+
             }
-            rd.Close();
-            //wyświetlanie z listy na ekran
+            catch (SqlException ex)
+            {
+                App.Current.MainPage.DisplayAlert("Błąd podczas łączenia z bazą danych" + ex.ToString(), "", "ok");
+            }
+            Books = new List<books>();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                books book = new books
+                {
+                    Id = Convert.ToInt32(dt.Rows[i]["BookId"]),
+                    Title = dt.Rows[i]["Title"].ToString(),
+                    Author = dt.Rows[i]["Author"].ToString(),
+                    ISBN = dt.Rows[i]["ISBN"].ToString(),
+                    Tags = dt.Rows[i]["Tags"].ToString()
+                };
+                Books.Add(book);
+            }
             lubie.ItemsSource = Books;
+            
 
         }
+
+        private void CzytajClicked(object sender, EventArgs e)
+        {
+            //odczytywanie zmiennej przypisanej do przycisku
+            var button = (Button)sender;
+            string ClassId = button.ClassId;
+            //zmiena zmiennej na typ int
+            int bookId = Convert.ToInt32(ClassId);
+            //URL książki
+            string URL = "";
+            //połączenie z bazą
+            try
+            {
+                using (SqlConnection connection = con.Connection())
+                {
+                    connection.Open();
+
+                    string sql = string.Format("SELECT [dbo].books.URL FROM [dbo].books WHERE [dbo].books.BookId = {0}", bookId);
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                URL = reader.GetString(0);
+                            }
+                        }
+                    }
+                }
+                Launcher.OpenAsync(new Uri(URL));
+            }
+            catch (SqlException ex)
+            {
+                App.Current.MainPage.DisplayAlert("Błąd", ex.ToString(), "ok");
+            }
+        }
+
         private void KsiazkiClicked(object sender,EventArgs e)
         {
             //przejście do książek w nawigacji
