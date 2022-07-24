@@ -27,8 +27,7 @@ namespace App1
             base.OnAppearing();
             MySqlConnection connection = new MySqlConnection(con.connect());
             connection.Open();
-            MySqlCommand command1 = new MySqlCommand("SELECT * FROM books", connection);
-
+                    
         }
     }
 }

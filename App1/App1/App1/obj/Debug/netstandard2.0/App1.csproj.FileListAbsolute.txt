@@ -19,8 +19,6 @@ C:\Users\Bartek\Documents\GitHub\projekt-zespolowy\App1\App1\App1\obj\Debug\nets
 C:\Users\Bartek\Documents\GitHub\projekt-zespolowy\App1\App1\App1\obj\Debug\netstandard2.0\App1.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Bartek\Documents\GitHub\projekt-zespolowy\App1\App1\App1\obj\Debug\netstandard2.0\App.xaml.g.cs
 C:\Users\Bartek\Documents\GitHub\projekt-zespolowy\App1\App1\App1\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
-C:\Users\Bartek\Documents\GitHub\projekt-zespolowy\App1\App1\App1\obj\Debug\netstandard2.0\Page1.xaml.g.cs
-C:\Users\Bartek\Documents\GitHub\projekt-zespolowy\App1\App1\App1\obj\Debug\netstandard2.0\Page2.xaml.g.cs
 C:\Users\Bartek\Documents\GitHub\projekt-zespolowy\App1\App1\App1\obj\Debug\netstandard2.0\App1.AssemblyInfoInputs.cache
 C:\Users\Bartek\Documents\GitHub\projekt-zespolowy\App1\App1\App1\obj\Debug\netstandard2.0\App1.AssemblyInfo.cs
 C:\Users\Bartek\Documents\GitHub\projekt-zespolowy\App1\App1\App1\obj\Debug\netstandard2.0\App1.csproj.CoreCompileInputs.cache
@@ -32,3 +30,7 @@ C:\Users\Bartek\Documents\GitHub\projekt-zespolowy\App1\App1\App1\bin\Debug\nets
 C:\Users\Bartek\Documents\GitHub\projekt-zespolowy\App1\App1\App1\bin\Debug\netstandard2.0\App1.pdb
 C:\Users\Bartek\Documents\GitHub\projekt-zespolowy\App1\App1\App1\obj\Debug\netstandard2.0\XamlC.stamp
 C:\Users\Bartek\Documents\GitHub\projekt-zespolowy\App1\App1\App1\obj\Debug\netstandard2.0\ref\App1.dll
+C:\Users\Bartek\Documents\GitHub\projekt-zespolowy\App1\App1\App1\obj\Debug\netstandard2.0\Ulubione.xaml.g.cs
+C:\Users\Bartek\Documents\GitHub\projekt-zespolowy\App1\App1\App1\obj\Debug\netstandard2.0\Ksiazki.xaml.g.cs
+C:\Users\Bartek\Documents\GitHub\projekt-zespolowy\App1\App1\App1\obj\Debug\netstandard2.0\lubiane.xaml.g.cs
+C:\Users\Bartek\Documents\GitHub\projekt-zespolowy\App1\App1\App1\obj\Debug\netstandard2.0\Rejestracja.xaml.g.cs

@@ -2,7 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="App1.Page2">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Ulubione" Clicked="UlubioneClicked"/>
 
+    </ContentPage.ToolbarItems>
+    
+    
     <Frame>
         <ListView x:Name="Ksiazka" HasUnevenRows="True">
             <ListView.ItemTemplate>
@@ -14,10 +19,13 @@
                             <Label x:Name="Date" Text="{Binding Date}" />
                             <Label x:Name="Isbn" Text="{Binding ISBN}" />
                             <Button x:Name="Id" Text="Dodaj do ulubionych" Clicked="DoUlubionychClicked" ClassId="{Binding Id}"/>
+
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        
     </Frame>
+    
 </ContentPage>

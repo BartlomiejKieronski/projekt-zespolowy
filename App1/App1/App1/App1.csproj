@@ -18,10 +18,25 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Page1.xaml">
+    <Compile Update="Ksiazki.xaml.cs">
+      <DependentUpon>Ksiazki.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="lubiane.xaml.cs">
+      <DependentUpon>lubiane.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Rejestracja.xaml.cs">
+      <DependentUpon>Rejestracja.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Rejestracja.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Page2.xaml">
+    <EmbeddedResource Update="Ksiazki.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="lubiane.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Ulubione.xaml">

@@ -13,6 +13,7 @@ namespace App1
     public partial class Page1 : ContentPage
     {
         mysql_connect con = new mysql_connect();
+        
         public Page1()
         {
             InitializeComponent();
@@ -25,21 +26,7 @@ namespace App1
         }
         private void Zarejestruj_Clicked(object sender, EventArgs e)
         {
-            /*if(Haslo.Text == PowtorzHaslo.Text)
-            {
-                try { 
-                MySqlConnection connection = new MySqlConnection(con.connect());
-                connection.Open();
-                    string login = Login.Text.ToString();
-                    string haslo = Haslo.Text.ToString();
-                MySqlCommand command1 = new MySqlCommand("INSERT INTO uzytkownicy (Login, Haslo) VALUES('"+ login + "','"+ haslo +"')");
-                    
-                }
-                catch
-                {
-
-                }
-            }*/
+            
             if (Haslo.Text == PowtorzHaslo.Text)
             {
                 try

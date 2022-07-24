@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App1.Page3">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Ksiązki" Clicked="KsiazkiClicked"/>
+
+    </ContentPage.ToolbarItems>
+    <Frame>
+        <ListView x:Name="lubie" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <Label x:Name="Title" Text="{Binding Title}" />
+                            <Label x:Name="Author" Text="{Binding Author}" />
+                            <Label x:Name="Date" Text="{Binding Date}" />
+                            <Label x:Name="Isbn" Text="{Binding ISBN}" />
+                            <Label x:Name="UserId" Text="{Binding userId}" />
+
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Frame>
+</ContentPage>
