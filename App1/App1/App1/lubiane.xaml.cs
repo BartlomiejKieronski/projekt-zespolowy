@@ -13,8 +13,11 @@ namespace App1
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Page3 : ContentPage
     {
+        //odwolanie do klasy z połączeniem z bazą
         mysql_connect con = new mysql_connect();
+        //lista z klasy
         public IList<books> Books { get; set; }
+        //klasa z polami do przechowywaniadanych pobieranych z bazy
         public class books
         {
             public int Id { get; set; }
@@ -25,6 +28,7 @@ namespace App1
             public string UserId { get; set; }
 
         }
+        //zmienna z id użytkownika
         int login;
         public Page3(int _logowanie)
         {
@@ -33,18 +37,25 @@ namespace App1
             {
                 NavigationPage.SetHasBackButton(this, false);
             }
+            //przypisywanie id użytkownika do zmiennej
             login = _logowanie;
 
         }
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            //konvertowanie id użytkownika do stringu
             string useriden = login.ToString();
+            //połączenie z bazą
             MySqlConnection connection = new MySqlConnection(con.connect());
             connection.Open();
+            //pobieranie danych z bazy
             MySqlCommand command1 = new MySqlCommand("SELECT * FROM favourites WHERE userID='" + useriden + "'", connection);
+            //wykonywanie zapytania
             var rd = command1.ExecuteReader();
+            //tworzenie nowej listy 
             Books = new List<books>();
+            //dodawanie rekordów z bazy do listy
             while (rd.Read())
             {
                 Books.Add(new books
@@ -59,11 +70,13 @@ namespace App1
                 );
             }
             rd.Close();
+            //wyświetlanie z listy na ekran
             lubie.ItemsSource = Books;
 
         }
         private void KsiazkiClicked(object sender,EventArgs e)
         {
+            //przejście do książek w nawigacji
             Navigation.PushAsync(new Page2(login));
         }
 
