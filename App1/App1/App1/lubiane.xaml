@@ -14,10 +14,9 @@
                         <StackLayout>
                             <Label x:Name="Title" Text="{Binding Title}" />
                             <Label x:Name="Author" Text="{Binding Author}" />
-                            <Label x:Name="Date" Text="{Binding Date}" />
                             <Label x:Name="Isbn" Text="{Binding ISBN}" />
-                            <Label x:Name="UserId" Text="{Binding userId}" />
-
+                            <Label x:Name="Tags" Text="{Binding Tags}" />
+                            <Button x:Name="Id" Text="Czytaj" Clicked="CzytajClicked" ClassId="{Binding Id}"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

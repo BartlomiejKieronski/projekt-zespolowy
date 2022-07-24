@@ -6,13 +6,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using MySqlConnector;
+using System.Data.SqlClient;
 
 namespace App1
 {
     public partial class MainPage : ContentPage
     {
         //odwołanie do klasy  do połączenia z bazą
-        mysql_connect con = new mysql_connect();
+        SqlConnect con = new SqlConnect();
 
         public MainPage()
         {
@@ -30,36 +31,45 @@ namespace App1
 
             try
             {
+                int user = 0;
                 //połączenie z bazą
-                MySqlConnection connection = new MySqlConnection(con.connect());
-                connection.Open();
-                //zapytania do bazy
-                MySqlCommand command1 = new MySqlCommand("SELECT Login FROM uzytkownicy  WHERE Login = '" + Login.Text + "'", connection);
-                MySqlCommand command2 = new MySqlCommand("SELECT Haslo FROM uzytkownicy  WHERE Haslo = '" + Haslo.Text + "'", connection);
-                string Logowanie = command1.ExecuteScalar().ToString();
-                string Hasla = command2.ExecuteScalar().ToString();
-                //zapytanie o id użytkownika
-                MySqlCommand userID = new MySqlCommand("SELECT Id FROM uzytkownicy WHERE Login = '" + Logowanie + "' AND Haslo='" + Hasla + "'", connection);
-                //przekonvertowanie wyświetlonego zapytania na int
-                int user = Convert.ToInt32(userID.ExecuteScalar());
-                //sprawdzenie czy hasło i login nie są puste
-                if (!(Logowanie == null) && !(Hasla == null))
+                using (SqlConnection connection = con.Connection())
                 {
-                    //przejście do książek
-                    Navigation.PushAsync(new Page2(user));
+                    connection.Open();
 
+                    string sql = string.Format(@"SELECT [dbo].[users].[UserId]
+                                FROM[dbo].[users]
+                                WHERE[dbo].[users].Login = '{0}'
+                                AND [dbo].[users].Haslo = HASHBYTES('SHA2_256', CONVERT(NVARCHAR(255), '{1}'))",
+                                Login.Text, Haslo.Text);
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+
+                            while (reader.Read())
+                            {
+                                user = reader.GetInt32(0);
+                            }
+
+                        }
+                    }
+                }
+                if (user != 0)
+                {
+                    Navigation.PushAsync(new Page2(user));
                 }
                 else
                 {
                     //alert o nieudanym zalogowaniu
-                App.Current.MainPage.DisplayAlert("Nie udało się", "", "ok");
+                    App.Current.MainPage.DisplayAlert("Nie udało się", "", "ok");
                 }
-                connection.Close();
             }
-            catch
+            catch (SqlException ex)
             {
                 //wyświetlenie błędu
-                App.Current.MainPage.DisplayAlert("Nie udało się błąd", "", "ok");
+                App.Current.MainPage.DisplayAlert("Błąd", ex.ToString(), "ok");
             }
 
             }
